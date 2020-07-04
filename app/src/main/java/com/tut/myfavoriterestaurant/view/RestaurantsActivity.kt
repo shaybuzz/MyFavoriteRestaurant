@@ -1,6 +1,7 @@
 package com.tut.myfavoriterestaurant.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +26,14 @@ class RestaurantsActivity : AppCompatActivity() {
         viewModel.restaurants.observe(this, Observer {
             adapter.update(it)
         })
+        viewModel.loading.observe(this, Observer {
+            showLoader(it)
+        })
         initList()
+    }
+
+    private fun showLoader(loading: Boolean) {
+        progressBar.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
     private fun initList() {

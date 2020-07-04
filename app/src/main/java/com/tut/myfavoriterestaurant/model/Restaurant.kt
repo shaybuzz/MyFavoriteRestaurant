@@ -8,5 +8,5 @@ data class Restaurant(
     val name: String,
     val open: Boolean
 ) {
-    var isFavourite: Boolean = true
+    var isFavourite: Boolean = false
 }

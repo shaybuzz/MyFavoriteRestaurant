@@ -32,6 +32,8 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.RestaurantVie
 
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurants.get(position)
+        holder.binding.restaurant = restaurant
+        holder.binding.executePendingBindings()
         holder.binding.favourite.setOnClickListener {
             updateFavourite?.let {listener ->
                 restaurant.isFavourite = !restaurant.isFavourite
@@ -40,7 +42,5 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.RestaurantVie
                 listener(restaurant.id, restaurant.isFavourite)
             }
         }
-        holder.binding.restaurant = restaurant
-        holder.binding.executePendingBindings()
     }
 }
