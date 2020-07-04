@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyFavoriteRestaurant</string>
+    <string name="open">Now Open!</string>
+    <string name="close">close</string>
+    <string name="minimum_order">Minimum Order: %1$d</string>
+
+</resources>
