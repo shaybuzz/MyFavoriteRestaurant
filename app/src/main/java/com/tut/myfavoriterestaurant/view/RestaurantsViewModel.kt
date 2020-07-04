@@ -5,14 +5,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.tut.moviemvvm.datasource.local.entity.FavouriteDatabase
+import com.tut.moviemvvm.datasource.local.entity.FavoriteDatabase
 import com.tut.myfavoriterestaurant.repository.RestaurantsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RestaurantsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val db = FavouriteDatabase.getInstance(application)
+    private val db = FavoriteDatabase.getInstance(application)
     private val repo = RestaurantsRepository(db.favouriteDao)
     val restaurants = repo.restaurants
 

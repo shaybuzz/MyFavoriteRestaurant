@@ -28,6 +28,5 @@ object BindingAdapters {
             val res = if (it) R.drawable.ic_favorite else R.drawable.ic_favorite_border
             Glide.with(imageView.context).load(res).into(imageView)
         }
-
     }
 }

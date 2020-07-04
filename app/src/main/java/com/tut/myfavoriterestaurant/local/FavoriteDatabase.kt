@@ -5,17 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.tut.myfavoriterestaurant.local.FavouriteDao
-import com.tut.myfavoriterestaurant.local.entity.FavouriteRestaurant
+import com.tut.myfavoriterestaurant.local.entity.FavoriteRestaurant
 
-@Database(entities = [FavouriteRestaurant::class], version = 1, exportSchema = false)
-abstract class FavouriteDatabase : RoomDatabase() {
+@Database(entities = [FavoriteRestaurant::class], version = 1, exportSchema = false)
+abstract class FavoriteDatabase : RoomDatabase() {
     abstract val favouriteDao: FavouriteDao
 
     companion object {
         @Volatile
-        private var INSTANCE: FavouriteDatabase? = null
+        private var INSTANCE: FavoriteDatabase? = null
 
-        fun getInstance(context: Context): FavouriteDatabase {
+        fun getInstance(context: Context): FavoriteDatabase {
             var instance = INSTANCE
             if (instance != null) return instance
             synchronized(this) {
@@ -23,7 +23,7 @@ abstract class FavouriteDatabase : RoomDatabase() {
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        FavouriteDatabase::class.java,
+                        FavoriteDatabase::class.java,
                         "favourites_db"
                     )
                         .fallbackToDestructiveMigration()

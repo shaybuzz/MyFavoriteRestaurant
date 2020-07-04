@@ -3,7 +3,7 @@ package com.tut.myfavoriterestaurant.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tut.myfavoriterestaurant.local.FavouriteDao
-import com.tut.myfavoriterestaurant.local.entity.FavouriteRestaurant
+import com.tut.myfavoriterestaurant.local.entity.FavoriteRestaurant
 import com.tut.myfavoriterestaurant.local.isFavoriteRestaurant
 import com.tut.myfavoriterestaurant.model.Restaurant
 import com.tut.myfavoriterestaurant.network.Network
@@ -18,16 +18,18 @@ class RestaurantsRepository(private val favouriteDao: FavouriteDao) {
     suspend fun fetchData() {
         val list = api.fetchRestaurants()
         list.forEach {
+            //update the local favorite data from database
             it.isFavourite = favouriteDao.isFavoriteRestaurant(it.id)
         }
         _restaurants.postValue(list)
     }
 
     suspend fun updateFavourite(id: Int, isFavourite: Boolean) {
+        //update local database
         if (isFavourite) {
-            favouriteDao.addToFavourite(FavouriteRestaurant(id))
+            favouriteDao.addToFavorite(FavoriteRestaurant(id))
         } else {
-            favouriteDao.removeFromFavorite(FavouriteRestaurant(id))
+            favouriteDao.removeFromFavorite(FavoriteRestaurant(id))
         }
     }
 }

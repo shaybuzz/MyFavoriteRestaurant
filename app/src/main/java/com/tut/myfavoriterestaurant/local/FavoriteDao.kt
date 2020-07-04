@@ -1,18 +1,18 @@
 package com.tut.myfavoriterestaurant.local
 
 import androidx.room.*
-import com.tut.myfavoriterestaurant.local.entity.FavouriteRestaurant
+import com.tut.myfavoriterestaurant.local.entity.FavoriteRestaurant
 
 @Dao
 interface FavouriteDao {
-    @Query("SELECT COUNT(*) FROM favourites WHERE id = :id")
+    @Query("SELECT COUNT(*) FROM favorites WHERE id = :id")
     suspend fun getFavoriteCount(id: Int): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addToFavourite(favouriteRestaurant: FavouriteRestaurant)
+    suspend fun addToFavorite(favouriteRestaurant: FavoriteRestaurant)
 
     @Delete
-    suspend fun removeFromFavorite(favouriteRestaurant: FavouriteRestaurant)
+    suspend fun removeFromFavorite(favouriteRestaurant: FavoriteRestaurant)
 }
 
 suspend fun FavouriteDao.isFavoriteRestaurant(id: Int): Boolean {
